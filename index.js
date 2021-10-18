@@ -12,35 +12,38 @@ let countEl= 0
 
 
 textarea.addEventListener('input', function (event) {
-  arr = event.target.value.split(" ").filter((w) => w.length > 0);
+    arr = event.target.value.split(" ").filter((w) => w.length > 0);
  
-    
-        //empty state
-        if(event.target.value==""){
-        longestWord()
-        p.innerText =`Word count: 0, Longest word: ` 
-        countEl=countEl  
-        }
-        else {
-            longestWord()
-            countEl=arr.length
-            p.innerText=`Word count: ${countEl}, Longest word: ${longestWord()}`
-        }
-    //   console.log(`Split Array: ${arr}`)
+    countEl=arr.length
+    p.innerText=`Word count: ${countEl}, Longest word: ${calcLongestWord()}`
+        
+    console.log(`${arr}`)
 
   
 
 });
 
-function longestWord(){
+function calcLongestWord(){
     let wordMap = arr.map(w => w.length)
     let longestWord = ""
     
     console.log(`Word Map Count: ${wordMap}`)
-    if(arr.length <=1){
-        longestWord = arr[0]
+    // if(arr.length <=1){
+    //     longestWord = arr[0]
     
-    }else{
+    // }else{
+    //     for(i=1;i<wordMap.length;i++){
+    //         if(wordMap[i]>wordMap[i-1]){
+    //             longestWord = arr[i]
+    //         }else if(wordMap[i]<wordMap[i-1]){
+    //         longestWord = arr[i-1]
+    //         }else if(wordMap[i]==wordMap[i-1]){
+    //         longestWord = arr[i-1]
+    //         }
+    //     console.log(`Longest Word: ${longestWord}`)
+    //     }
+    // }
+    
         for(i=1;i<wordMap.length;i++){
             if(wordMap[i]>wordMap[i-1]){
                 longestWord = arr[i]
@@ -51,6 +54,6 @@ function longestWord(){
             }
         console.log(`Longest Word: ${longestWord}`)
         }
-    }
+    
   return longestWord
 }
